@@ -1,2 +1,51 @@
-<h1>Customers::Pictures#show</h1>
-<p>Find me in app/views/customers/pictures/show.html.erb</p>
+<div class="container my-5">
+  <div class="row mt-5">
+    <div class="col-6 text-center">
+      <%=image_tag @picture.picture_image,size:"350x250"%>
+    </div>
+    <div class="col-6">
+      <%#= form_with model: @cart do |f| %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td colspan="2"><h3 class="item-name2"><b><%= @picture.title %></b></h3></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= @picture.body %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2"><h5 style="display:inline"><strong><%=(@picture.price*10).round.to_s(:delimited)%></strong></h5><small>コイン</small></td>
+          </tr>
+
+          <tr>
+            <td>
+              <%#= f.hidden_field :item_id, :value => @item.id %>
+              <%#= f.select :quantity, *[1..10],prompt:"個数選択" %>
+            </td>
+            <td>
+              <%if @picture.is_active==true%>
+                <% if @picture.customer_id == current_customer.id %>
+                  <p>マイイラスト</p>
+                <% else %>
+                  <% if @price <= current_customer.coin %>
+                    <%= form_with url:collect_path, model: @collect do |f| %>
+                      <%= f.hidden_field :picture_id, :value => @picture.id %>
+                      <%= f.submit "使用許可を購入する",class:"btn btn-success" %>
+                    <% end %>
+                  <% else %>
+                    <p>コインが足りません</p>
+                  <% end %>
+                <% end %>
+              <%else%>
+                <p>このイラストは販売停止中です。</p>
+              <%end%>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%# end %>
+    </div>
+  </div>
+</div>

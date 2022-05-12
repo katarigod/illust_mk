@@ -1,0 +1,13 @@
+<div>
+    <h1>コインを購入する</h1>
+
+    <%= form_with url:buycoins_path, model: @buycoin do |f| %>
+        <div>
+            <%= f.text_field :piece,size:1 %>コイン
+        </div>
+        <div>
+            <%= f.submit "コインを購入する",class:"btn btn--orange" %>
+        </div>
+    <% end %>
+    <!--<p><a href="" class="btn btn--orange">PUSH</a></p>-->
+</div>
