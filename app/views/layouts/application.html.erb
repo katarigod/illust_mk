@@ -6,29 +6,48 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    
-    
+
+
+
   </head>
 
   <body>
   <header class="bg-warning text-light">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/"><%=image_tag"imk.jpg",size:"110x100"%> </a>
+          <a class="navbar-brand" href="/"><%= image_tag"imk.jpg",size:"110x100" %> </a>
           <div class="px-5">
           <% if customer_signed_in? %>
           ようこそ、<%#= current_customer.full_name %>さん！
-          <%end%>
+          <% end %>
           </div>
           <nav class="navbar-toggler" style="background-color:#ff7f50;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </nav>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+              <%if customer_signed_in?%>
+              <li class="nav-item">
+                <%=link_to(mypage_path(current_customer.id),class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">マイページ</span><%end%>
+              </li>
+              <li class="nav-item">
+                <%=link_to(pictures_index_path,class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">販売イラスト一覧</span><%end%>
+              </li>
+              <li class="nav-item">
 
+              </li>
+              <li class="nav-item">
+                <%=link_to(destroy_customer_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">ログアウト</span><%end%>
+              </li>
+              <%elsif admin_signed_in?%>
+              <li class="nav-item">
+                <%=link_to(destroy_admin_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">ログアウト</span><%end%>
+              </li>
+              <%else%>
+              <%end%>
 
 
             </ul>
@@ -37,8 +56,10 @@
       </nav>
     </header>
     <main>
+      <div class='background'>
       <%#= render 'layouts/flash' %>
        <%= yield %>
+      </div>
     </main>
     <footer class="bg-warning text-white pt-3 pb-2">
       <div class="container">

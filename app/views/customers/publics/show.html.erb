@@ -1,2 +1,47 @@
-<h1>Customers::Publics#show</h1>
-<p>Find me in app/views/customers/publics/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1><%= @customer.name %>のホーム</h1>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <% if @customer.profile_image.attached? %>
+        <%= image_tag @customer.profile_image, size: "480x480" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300x300" %>
+      <% end %>
+
+
+      <%#= image_tag @customer.get_profile_image(480,480),class:"d-block mx-auto" %>
+    </div>
+    <div class="col-6">
+      <table class='table'>
+        <tr>
+          <th><%= @customer.coin %>枚</th>
+          <th>
+            <%= link_to "コインを購入する", new_buycoin_path %>
+          </th>
+        </tr>
+        <tr>
+	        <th></th>
+	        <th></th>
+        </tr>
+        <tr>
+	        <th></th>
+	        <th></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>
+
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>
+
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

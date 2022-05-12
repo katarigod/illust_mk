@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class="row">
     <div class="toppage">
-      <h2><b>商品一覧</b><span class="total_count">(全<%= @pictures.total_count %>件)</span></h2>
+      <h2><b>使用許可イラスト一覧</b><span class="total_count">(全<%= @pictures.total_count %>件)</span></h2>
     </div>
     <div class="item-box">
       <% @pictures.each do |picture| %>
@@ -16,13 +16,8 @@
               <% end %>
             </div>
             <p class="item-name">
-              <%= picture.title %>
+              制作者：<%= picture.customer.name %>
             </p>
-          <% end %>
-          <% if picture.is_active == true %>
-            <p class="item-price"><%= picture.price * 10 %>コイン</p>
-          <% elsif picture.is_active == false %>
-            <p class="soldout">売り切れ中</p>
           <% end %>
         </div>
 
