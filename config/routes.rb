@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :customers do
-    get 'buycoin/new'
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for:customers,skip:[:passwords],controllers:{
@@ -16,6 +13,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :pictures,only:[:index,:show,:edit,:update,:destroy]
     resources :publics,only:[:index,:show,:edit,:update]
+    get 'buycoins/:id' => 'buycoins#show'
+    resources :buycoins,only:[:index,:show,:update]
   end
 
   scope module: :customers do
@@ -26,8 +25,10 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     get 'pictures/index'
     resources :pictures,only:[:new,:create,:show,:edit,:update]
-    get 'collects' => 'collect#index'
-    post 'collects' => 'collect#create'
+    get 'collects' => 'collects#index'
+    post 'collects' => 'collects#create'
+
+    get 'buycoins/bought' => 'buycoins#bought',as: :bought
     resources :buycoins,only:[:index,:new,:create,:show,:update]
   end
 end

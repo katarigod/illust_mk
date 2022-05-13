@@ -1,22 +1,23 @@
 class Customers::CollectsController < ApplicationController
   def index
-    @customer = current_customer
-    mycollect = current_customer.collect
-    @pictures = mycollect.picture.page(params[:page]).per(8)
+    @collects = Collect.where(customer_id: current_customer.id).page(params[:page]).per(8)
+    # @pictures = collect.picture.page(params[:page]).per(8)
   end
 
   def create
     @collect =Collect.new(collect_params)
+    @picture = @collect.picture
+    @price = @picture.price * 10
     @collect.customer_id = current_customer.id
     if @collect.save
       @customer = current_customer
-      @customer.coin = @customer.coin - @price
+      @customer.coin -= @price
       @customer.save
       @customer2 = @picture.customer
-      @customer2.coin = @customer2.coin + @price*0.9
+      @customer2.coin += @price*0.9
       @customer2.save
-      @admin = Admin.find(params[1])
-      @admin.admin_coin = @admin.admin_coin + @price*0.1
+      @admin = Admin.find(1)
+      @admin.admin_coin += @price*0.1
       @admin.save
       redirect_to collects_path
     else

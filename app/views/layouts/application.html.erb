@@ -29,25 +29,28 @@
           </nav>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <%if customer_signed_in?%>
+              <%if customer_signed_in? %>
               <li class="nav-item">
-                <%=link_to(mypage_path(current_customer.id),class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">マイページ</span><%end%>
+                <%= link_to(mypage_path(current_customer.id),class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">マイページ</span><% end %>
               </li>
               <li class="nav-item">
-                <%=link_to(pictures_index_path,class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">販売イラスト一覧</span><%end%>
+                <%= link_to(pictures_index_path,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">販売イラスト一覧</span><% end %>
               </li>
               <li class="nav-item">
-
+                <%= link_to(collects_path,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">購入イラスト一覧</span><% end %>
               </li>
               <li class="nav-item">
-                <%=link_to(destroy_customer_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">ログアウト</span><%end%>
+                <%= link_to(destroy_customer_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">ログアウト</span><% end %>
               </li>
-              <%elsif admin_signed_in?%>
+              <% elsif admin_signed_in?%>
               <li class="nav-item">
-                <%=link_to(destroy_admin_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do%><span style="color:#ff7f00;">ログアウト</span><%end%>
+                <%= link_to(admins_buycoins_path,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">購入申請一覧</span><% end %>
               </li>
-              <%else%>
-              <%end%>
+              <li class="nav-item">
+                <%= link_to(destroy_admin_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">ログアウト</span><% end %>
+              </li>
+              <% else %>
+              <% end %>
 
 
             </ul>

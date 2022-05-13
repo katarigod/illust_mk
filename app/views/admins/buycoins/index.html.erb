@@ -1,0 +1,23 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="toppage">
+      <h2><b>購入申請一覧</b><span class="total_count">(全<%= @buycoins.total_count %>件)</span></h2>
+    </div>
+    <div class="item-box">
+      <% @buycoins.each do |buycoin| %>
+
+        <div class="item-container">
+          <%= link_to buycoin.customer.name, admins_buycoin_path(buycoin.id) %>
+            <p class="item-name"><%= buycoin.piece %>コイン</p>
+          <% if buycoin.yet_buy == true %>
+            <p class="item-price">入金待ち</p>
+          <% elsif buycoin.yet_buy == false %>
+            <p class="soldout">反映済み</p>
+          <% end %>
+        </div>
+
+	    <% end %>
+	  </div>
+	  <div class="picture-pagenate"><%= paginate @buycoins %></div>
+	</div>
+</div>

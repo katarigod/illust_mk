@@ -30,7 +30,7 @@
                   <p>マイイラスト</p>
                 <% else %>
                   <% if @price <= current_customer.coin %>
-                    <%= form_with url:collect_path, model: @collect do |f| %>
+                    <%= form_with url:collects_path, model: @collect do |f| %>
                       <%= f.hidden_field :picture_id, :value => @picture.id %>
                       <%= f.submit "使用許可を購入する",class:"btn btn-success" %>
                     <% end %>
