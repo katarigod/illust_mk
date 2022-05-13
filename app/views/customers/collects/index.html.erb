@@ -1,28 +1,28 @@
 <div class="container my-5">
   <div class="row">
     <div class="toppage">
-      <h2><b>使用許可イラスト一覧</b><span class="total_count">(全<%= @pictures.total_count %>件)</span></h2>
+      <h2><b>使用許可イラスト一覧</b><span class="total_count">(全<%= @collects.total_count %>件)</span></h2>
     </div>
     <div class="item-box">
-      <% @pictures.each do |picture| %>
+      <% @collects.each do |collect| %>
 
         <div class="item-container">
-          <%= link_to picture_path(picture.id), class: "btn-link" do %>
+          <%= link_to picture_path(collect.picture_id), class: "btn-link" do %>
             <div class="image-field">
-              <% if picture.picture_image.attached? %>
-                <%= image_tag picture.picture_image ,size:"180x130" %>
+              <% if collect.picture.picture_image.attached? %>
+                <%= image_tag collect.picture.picture_image ,size:"180x130" %>
               <% else %>
                 <%= image_tag 'no_image', size: "200x200" %>
               <% end %>
             </div>
             <p class="item-name">
-              制作者：<%= picture.customer.name %>
+              制作者：<%= collect.picture.customer.name %>
             </p>
           <% end %>
         </div>
 
 	    <% end %>
 	  </div>
-	  <div class="picture-pagenate"><%= paginate @pictures %></div>
+	  <div class="picture-pagenate"><%= paginate @collects %></div>
 	</div>
 </div>

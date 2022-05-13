@@ -7,10 +7,14 @@ class Customers::BuycoinsController < ApplicationController
     @buycoin = Buycoin.new(buycoin_params)
     @buycoin.customer_id = current_customer.id
     if @buycoin.save
-      redirect_to mypage_path(current_customer)
+      # @buycoin1 = Buycoin.find(params[@buycoin])
+      redirect_to bought_path
     else
       render "new"
     end
+  end
+
+  def bought
   end
 
   def index
