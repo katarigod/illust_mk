@@ -44,7 +44,13 @@
               </li>
               <% elsif admin_signed_in?%>
               <li class="nav-item">
+                <%= link_to(admins_publics_path,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">会員一覧</span><% end %>
+              </li>
+              <li class="nav-item">
                 <%= link_to(admins_buycoins_path,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">購入申請一覧</span><% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(admins_revenue_path,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">収益確認</span><% end %>
               </li>
               <li class="nav-item">
                 <%= link_to(destroy_admin_session_path,method: :delete,class:"nav-link text-warning btn btn-light mx-3")do %><span style="color:#ff7f00;">ログアウト</span><% end %>

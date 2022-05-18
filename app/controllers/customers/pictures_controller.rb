@@ -24,7 +24,21 @@ class Customers::PicturesController < ApplicationController
     @price = @picture.price * 10
   end
 
+  def mypictures
+    @pictures = Picture.where(customer_id: current_customer.id).page(params[:page]).per(8)
+  end
+
   def edit
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    if @picture.update(picture_params)
+      redirect_to mypicture_path
+    else
+      render "edit"
+    end
   end
 
   private

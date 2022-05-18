@@ -1,6 +1,7 @@
 class Customers::CollectsController < ApplicationController
   def index
     @collects = Collect.where(customer_id: current_customer.id).page(params[:page]).per(8)
+    @customer = current_customer
     # @pictures = collect.picture.page(params[:page]).per(8)
   end
 
@@ -22,6 +23,23 @@ class Customers::CollectsController < ApplicationController
       redirect_to collects_path
     else
       redirect_to request.referer
+    end
+  end
+
+  def set
+    
+
+    collect = Collect.find(params[:id])
+    customer = current_customer
+    customer.profile_url = url_for(collect.picture.picture_image)
+    # downloaded_image = collect.picture.picture_image.download
+    # @customer.profile_image.attach(io: downloaded_image  , filename: "foo.jpg")
+    # @customer.save!
+
+    if customer.save
+      redirect_to mypage_path(current_customer.id)
+    else
+      render 'index'
     end
   end
 

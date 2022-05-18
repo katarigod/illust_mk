@@ -1,0 +1,22 @@
+<%if @change.errors.any?%>
+  <h3><%= @change.errors.count%>個のエラーがあります</h3>
+  <ul>
+    <% @change.errors.full_messages.each do |message|%>
+    <li><%=message%></li>
+    <%end%>
+  </ul>
+<%end%>
+<div>
+    <h1>コインを交換する</h1>
+<h3>ガバスと交換</h3>
+    <%= form_with url:confirm_path, model: @change_coin do |f| %>
+        <div>
+            <p>交換するコインを入力</p>
+            <%= f.text_field :piece,size:1 %>000コイン
+        </div>
+        <div>
+            <%= f.submit "コインを交換する",class:"btn btn--orange" %>
+        </div>
+    <% end %>
+    <!--<p><a href="" class="btn btn--orange">PUSH</a></p>-->
+</div>
