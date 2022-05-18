@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="row">
+        <h5 class="pb-4 mt-5">
+            <span class="midashi px-3"><%=@customer.name%>さんの会員詳細</span>
+        </h5>
+    </div>
+
+    <table class="table table-borderless mb-5">
+        <tbody>
+            <tr>
+                <td>会員ID</td>
+                <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+                <td>ユーザーネーム</td>
+                <td><%= @customer.name %></td>
+            </tr>
+            <tr>
+                <td>メールアドレス</td>
+                <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+                <td>保有コイン数</td>
+                <td><%= @customer.coin %></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <%=link_to"退会させる",admins_public_path(@customer.id),method: :delete,class:"btn btn-primary"%>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

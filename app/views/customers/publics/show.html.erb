@@ -4,10 +4,10 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <% if @customer.profile_image.attached? %>
-        <%= image_tag @customer.profile_image, size: "480x480" %>
-      <% else %>
+      <% if @customer.profile_url  == nil %>
         <%= image_tag 'no_image', size: "300x300" %>
+      <% else %>
+        <%= image_tag @customer.profile_url, size: "480x480" %>
       <% end %>
 
 
@@ -16,23 +16,23 @@
     <div class="col-6">
       <table class='table'>
         <tr>
-          <th><%= @customer.coin %>枚</th>
+          <th>保有コイン</th>
           <th>
-            <%= link_to "コインを購入する", new_buycoin_path %>
+            <%= @customer.coin %>枚
           </th>
         </tr>
         <tr>
-	        <th></th>
-	        <th></th>
+	        <th><%= link_to "コインを購入する", new_buycoin_path %></th>
+	        <th><%= link_to "コインと交換する", change_path %></th>
         </tr>
         <tr>
 	        <th></th>
-	        <th></th>
+	        <th><%= link_to "会員情報を変更する", editpage_path(current_customer) %></th>
         </tr>
         <tr>
-          <th></th>
+          <th><%= link_to "イラストを販売する", new_picture_path %></th>
           <th>
-
+            <%= link_to "販売中のイラストを管理する", mypicture_path %></th>
           </th>
         </tr>
         <tr>

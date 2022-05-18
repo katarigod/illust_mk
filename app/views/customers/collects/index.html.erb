@@ -19,9 +19,10 @@
               制作者：<%= collect.picture.customer.name %>
             </p>
           <% end %>
+          <%= link_to "プロフィール画像に設定する", set_path(collect.id),method: :patch,class:"btn btn--orange" %>
         </div>
 
-	    <% end %>
+	     <% end %>
 	  </div>
 	  <div class="picture-pagenate"><%= paginate @collects %></div>
 	</div>

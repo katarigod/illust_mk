@@ -1,0 +1,13 @@
+<div>
+    <h1>確認画面</h1>
+    <%= form_with url:changecoin_path, model: @change_coin do |f| %>
+        <div>
+            <p><%= @change.piece %>000コインを<%= @gabas %>ガバスと交換します。</p>
+            <%= f.hidden_field :piece,:value=>@change.piece %>
+        </div>
+        <div>
+            <%= f.submit "交換を確定する",class:"btn btn--orange" %>
+        </div>
+    <% end %>
+    <!--<p><a href="" class="btn btn--orange">PUSH</a></p>-->
+</div>

@@ -1,6 +1,8 @@
 class Customers::PublicsController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
+    # @collect = Collect.find(params[:format])
+    # binding.pry
     if @customer == current_customer
       if @customer.coin == nil
         @customer.coin = 0
@@ -13,6 +15,16 @@ class Customers::PublicsController < ApplicationController
   end
 
   def edit
+    @customer = current_customer
+  end
+
+  def update
+    @customer = current_customer
+    if @customer.update(customer_params)
+      redirect_to mypage_path(current_customer.id)
+    else
+      render "edit"
+    end
   end
 
   private
