@@ -10,8 +10,10 @@ class Customers::PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @picture.customer_id = current_customer.id
+    # tags = params[:picture][:tag_id].to_s.split(',')
 
     if @picture.save
+      # @picture.save_tags(tags)
       redirect_to mypage_path(current_customer)
     else
       render "new"
@@ -22,6 +24,7 @@ class Customers::PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     @collect =Collect.new
     @price = @picture.price * 10
+    # @tags = @picture.tags.pluck(:name).join(',')
   end
 
   def mypictures
@@ -30,11 +33,14 @@ class Customers::PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+    @tags = @picture.tags.pluck(:name).join(',')
   end
 
   def update
     @picture = Picture.find(params[:id])
+    # tags = params[:picture][:tag_id].split(',')
     if @picture.update(picture_params)
+      # @picture.update_tags(tags)
       redirect_to mypicture_path
     else
       render "edit"
