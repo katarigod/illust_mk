@@ -189,21 +189,21 @@ html {
 }
 
 /*背景画像設定*/
-// header,footer{
-//   background-image: url("machi.jpg");
-// }
-
-// body{
-//   background-image: url("body.jpg");
-// }
-
 header,footer{
-  background-image: image-url("machi.jpg");
+  background-image: url("machi.jpg");
 }
 
 body{
-  background-image: image-url("body.jpg");
+  background-image: url("body.jpg");
 }
+
+// header,footer{
+//   background-image: image-url("machi.jpg");
+// }
+
+// body{
+//   background-image: image-url("body.jpg");
+// }
 
 footer{
   color: #000000;
@@ -351,8 +351,10 @@ footer{
   right: 7px;
 }
 
-
-
+// イラスト新規
+.pic{
+  width: 100px;
+}
 
 
 
