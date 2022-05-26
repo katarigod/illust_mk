@@ -1,35 +1,43 @@
-
-<div class="container">
-    <div class="row">
-        <h5 class="pb-4 mt-5">
-            <span class="midashi px-3"><%=@customer.name%>さんの会員詳細</span>
-        </h5>
+<div class="container back my-5">
+    <div class="box1">
+        <h1 class="buy"><%=@customer.name%>さんの会員詳細</h1>
     </div>
 
-    <table class="table table-borderless mb-5">
-        <tbody>
-            <tr>
-                <td>会員ID</td>
-                <td><%= @customer.id %></td>
-            </tr>
-            <tr>
-                <td>ユーザーネーム</td>
-                <td><%= @customer.name %></td>
-            </tr>
-            <tr>
-                <td>メールアドレス</td>
-                <td><%= @customer.email %></td>
-            </tr>
-            <tr>
-                <td>保有コイン数</td>
-                <td><%= @customer.coin %></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <%=link_to"退会させる",admins_public_path(@customer.id),method: :delete,class:"btn btn-primary"%>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+
+    <div class="mt-5 box1">
+        <div class="inline mr-5">
+            <div class="bottom">
+                <h4>会員ID</h4>
+            </div>
+            <div class="bottom">
+                <h4>ユーザーネーム</h4>
+            </div>
+            <div class="bottom">
+                <h4>メールアドレス</h4>
+            </div>
+            <div class="bottom">
+                <h4>保有コイン数</h4>
+            </div>
+        </div>
+        <div class="inline ml-5">
+            <div class="bottom">
+                <h4><%= @customer.id %></h4>
+            </div>
+            <div class="bottom">
+                <h4><%= @customer.name %></h4>
+            </div>
+            <div class="bottom">
+                <h4><%= @customer.email %></h4>
+            </div>
+            <div class="bottom">
+                <h4><%= @customer.coin %></h4>
+            </div>
+        </div>
+    </div>
+    <div class="box1 mt-5">
+        <div>
+            <%= link_to"退会させる",admins_public_path(@customer.id),method: :delete,class:"a-btn a-btn-border" %>
+        </div>
+    </div>
 </div>

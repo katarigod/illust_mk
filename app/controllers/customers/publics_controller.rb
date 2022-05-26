@@ -1,4 +1,6 @@
 class Customers::PublicsController < ApplicationController
+  before_action :authenticate_customer!
+
   def show
     @customer = Customer.find(params[:id])
     # @collect = Collect.find(params[:format])

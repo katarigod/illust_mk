@@ -1,4 +1,6 @@
 class Customers::CollectsController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @collects = Collect.where(customer_id: current_customer.id).page(params[:page]).per(8)
     @customer = current_customer
@@ -27,7 +29,7 @@ class Customers::CollectsController < ApplicationController
   end
 
   def set
-    
+
 
     collect = Collect.find(params[:id])
     customer = current_customer

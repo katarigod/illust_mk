@@ -4,13 +4,14 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+  validates :email, presence: true
+  validates :name, presence: true
 
   has_one_attached :profile_image
   has_many :pictures,dependent: :destroy
   has_many :collects,dependent: :destroy
-  has_many :buycoins
-  has_many :change_coins
+  has_many :buycoins,dependent: :destroy
+  has_many :change_coins,dependent: :destroy
 
   # def image_url
   #   image.attached? ? url_for(profile_image) : nil

@@ -1,61 +1,56 @@
-<div class="container">
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-10">
-      <div class="my-3">
-        <h5 class="pb-4 mt-3">
-          <span class="midashi px-3">購入処理</span>
-        </h5>
-      </div>
-    </div>
+<div class="container back my-5">
+  <div class="box1">
+    <h1 class="buy">購入処理</h1>
   </div>
 
-  <div class="row">
-    <div class="col-6 mx-auto pb-5">
-      <%= form_with model:@buycoin,url:admins_buycoin_path,method: :patch,local:true do |f| %>
 
+
+  <div class="row mt-5">
+    <div class="mx-auto pb-5">
+      <%= form_with model:@buycoin,url:admins_buycoin_path,method: :patch,local:true do |f| %>
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :購入者,class:"pl-3" %>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= @buycoin.customer.name %>
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :購入者ID,class:"pl-3" %>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= @buycoin.customer.id %>
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :購入コイン数,class:"pl-3"%>
           </div>
-          <div class="col-8">
-            <%= f.text_field :piece,size:30%>枚
+          <div class="col-7">
+            <%= f.text_field :piece,size:10 %>枚
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :購入ステータス,class:"pl-3"%>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= f.radio_button :yet_buy, true %>入金待ち  <%= f.radio_button :yet_buy, false %>反映済み
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4"></div>
-          <div class="col-8">
-            <%= f.submit "  変更を保存  ",class:"btn btn-success"%>
+          <div class="col-1"></div>
+          <div class="col-8 mt-5">
+            <%= f.submit" 変更を保存 ",class:"a-btn a-btn-border" %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
+</div>
