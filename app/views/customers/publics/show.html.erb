@@ -6,7 +6,7 @@
 
     <div>
       <% if @customer.profile_url  == nil %>
-        <%= image_tag 'no_image', size: "250x250" %>
+        <%= image_tag 'no_image.jpg', size: "250x250" %>
       <% else %>
         <%= image_tag @customer.profile_url, size: "250x250" %>
       <% end %>
