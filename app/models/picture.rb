@@ -5,10 +5,11 @@ class Picture < ApplicationRecord
   has_many :tagconnects, dependent: :destroy
   has_many :tags, through: :tagconnects
 
-  # def self.image_url
-  #   picture_image.attached? ? url_for(picture_image) : nil
-  # end
-  
+  validates :price, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :picture_image, presence: true
+
   def save_tags(tags)
     tags.each do |new_tags|
       # selfは明示的に記載していてこの場合だとコントローラーの@postになる
@@ -37,7 +38,7 @@ class Picture < ApplicationRecord
       #　　　　　　 b             a b c
       old_tags = current_tags - latest_tags
       #一致したものを取り出す
-      # a c       a b c            b 
+      # a c       a b c            b
       new_tags = latest_tags - current_tags
 
       # a  c
@@ -54,5 +55,5 @@ class Picture < ApplicationRecord
       end
     end
   end
-  
+
 end

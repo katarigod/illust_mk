@@ -1,47 +1,74 @@
-<div class="container">
-  <div class="row">
-    <h1><%= @customer.name %>のホーム</h1>
+<div class="container my-5 back">
+  <div class="py-5">
+    <h1 class="text-center"><%= @customer.name %>のホーム</h1>
   </div>
-  <div class="row">
-    <div class="col-6">
+  <div class="big-box1">
+
+    <div>
       <% if @customer.profile_url  == nil %>
-        <%= image_tag 'no_image', size: "300x300" %>
+        <%= image_tag 'no_image', size: "250x250" %>
       <% else %>
-        <%= image_tag @customer.profile_url, size: "480x480" %>
+        <%= image_tag @customer.profile_url, size: "250x250" %>
       <% end %>
-
-
-      <%#= image_tag @customer.get_profile_image(480,480),class:"d-block mx-auto" %>
     </div>
-    <div class="col-6">
-      <table class='table'>
-        <tr>
-          <th>保有コイン</th>
-          <th>
-            <%= @customer.coin %>枚
-          </th>
-        </tr>
-        <tr>
-	        <th><%= link_to "コインを購入する", new_buycoin_path %></th>
-	        <th><%= link_to "コインと交換する", change_path %></th>
-        </tr>
-        <tr>
-	        <th></th>
-	        <th><%= link_to "会員情報を変更する", editpage_path(current_customer) %></th>
-        </tr>
-        <tr>
-          <th><%= link_to "イラストを販売する", new_picture_path %></th>
-          <th>
-            <%= link_to "販売中のイラストを管理する", mypicture_path %></th>
-          </th>
-        </tr>
-        <tr>
-          <th></th>
-          <th>
 
-          </th>
-        </tr>
-      </table>
+    <div>
+      <div class="text-center buy">
+        <h4 class="coin">
+          保有コイン　:　<%= @customer.coin %>枚
+        </h4>
+      </div>
+      <div class="big-box1">
+        <div class="margin">
+          <%= link_to(new_buycoin_path,class:"a-btn a-btn-3d-circle")do %>
+            <span class="a-btn-3d-circle-content">
+              <span class="a-btn-3d-circle-front">コインを購入</span>
+            </span>
+            <span class="a-btn-3d-circle-back">Go!</span>
+          <% end %>
+        </div>
+
+        <div class="margin">
+          <%= link_to(change_path,class:"a-btn a-btn-3d-circle")do %>
+            <span class="a-btn-3d-circle-content">
+              <span class="a-btn-3d-circle-front">コインと交換</span>
+            </span>
+            <span class="a-btn-3d-circle-back">Go!</span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="box1">
+        <div class="margin">
+          <%= link_to(editpage_path(current_customer),class:"a-btn a-btn-3d-circle")do %>
+            <span class="a-btn-3d-circle-content">
+              <span class="a-btn-3d-circle-front">会員情報を変更</span>
+            </span>
+            <span class="a-btn-3d-circle-back">Go!</span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="big-box1">
+        <div class="margin">
+          <%= link_to(new_picture_path,class:"a-btn a-btn-3d-circle")do %>
+            <span class="a-btn-3d-circle-content">
+              <span class="a-btn-3d-circle-front">イラストを販売</span>
+            </span>
+            <span class="a-btn-3d-circle-back">Go!</span>
+          <% end %>
+        </div>
+
+        <div class="margin">
+          <%= link_to(mypicture_path,class:"a-btn a-btn-3d-circle")do %>
+            <span class="a-btn-3d-circle-content">
+              <span class="a-btn-3d-circle-front">イラストを管理</span>
+            </span>
+            <span class="a-btn-3d-circle-back">Go!</span>
+          <% end %>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

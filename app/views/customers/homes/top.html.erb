@@ -1,22 +1,26 @@
-<div class="container">
+<div class="container my-5 back">
   <div class="row mt-3">
     <div class="mx-auto">
       <h1 class="my-3 text-center">イラマケッ！</h1>
       <div>
-        <p>イラマケッ！は初心者の絵描きさんと、イラストが欲しい応援者さんを繋げるサイトです。<br>
-            ・イラストの保存は必ず購入イラスト一覧からお願いします。<br>
+        <h5>イラマケッ！は初心者の絵描きさんと、イラストが欲<br class="br-sp">しい応援者さんを繋げるサイトです。<br>
+            ・イラストの保存は必ず購入イラスト一覧からお願い<br class="br-sp">します。<br>
             ・購入前のイラストの保存は犯罪です。<br>
-            ・著作権の侵害は、10年以下の懲役又は1000万円以下の罰金に課される可能性があります。<br>
+            ・著作権の侵害は、10年以下の懲役又は1000万円以下<br class="br-sp">の罰金に課される可能性があります。<br>
             ・また、許可権利は商業利用では使用できません。<br>
             ・個別依頼の場合のみ、商業利用が可能です。<br>
-            本サイト利用者は以上のことに同意したものとします。</p>
+            本サイト利用者は以上のことに同意したものとします。</h5>
       </div>
       <div class="my-3 text-center">
-        それでは早速、あなたもイラストマーケットに参加してみましょう!
+        それでは、あなたもイラストマーケットに参加してみましょう!
       </div>
       <div class="row py-3 form-group justify-content-center">
-        <%=link_to"ログイン",new_customer_session_path,class:"btn btn-primary mr-2 px-3"%>
-        <%=link_to"会員登録",new_customer_registration_path,class:"btn btn-success px-4"%>
+        <div class="mr-5">
+          <%=link_to"ログイン",new_customer_session_path,class:"a-btn a-btn-border1"%>
+        </div>
+        <div>
+          <%=link_to"会員登録",new_customer_registration_path,class:"a-btn a-btn-border1"%>
+        </div>
       </div>
     </div>
   </div>

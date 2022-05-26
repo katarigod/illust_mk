@@ -1,4 +1,6 @@
 class Customers::PicturesController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @pictures = Picture.where(is_active: true).page(params[:page]).per(8)
   end

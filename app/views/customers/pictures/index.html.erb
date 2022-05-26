@@ -1,33 +1,40 @@
-<div class="container my-5">
+<div class="container my-5 back">
+  <h2><b>販売イラスト一覧</b><span class="total_count">(全<%= @pictures.total_count %>件)</span></h2>
   <div class="row">
-    <div class="toppage">
-      <h2><b>商品一覧</b><span class="total_count">(全<%= @pictures.total_count %>件)</span></h2>
-    </div>
-    <div class="item-box">
+    <div class="big-box">
       <% @pictures.each do |picture| %>
 
-        <div class="item-container">
+        <div class="min-box">
           <%= link_to picture_path(picture.id), class: "btn-link" do %>
             <div class="image-field">
               <% if picture.picture_image.attached? %>
-                <%= image_tag picture.picture_image ,size:"180x130" %>
+                <%= image_tag picture.picture_image ,size:"270x195" %>
               <% else %>
                 <%= image_tag 'no_image', size: "200x200" %>
               <% end %>
             </div>
-            <p class="item-name">
-              <%= picture.title %>
-            </p>
+
           <% end %>
-          <% if picture.is_active == true %>
-            <p class="item-price"><%= picture.price * 10 %>コイン</p>
-          <% elsif picture.is_active == false %>
-            <p class="soldout">売り切れ中</p>
-          <% end %>
+          <div class="text-center">
+            <h3 class="item-name">
+              Title:<%= picture.title %>
+            </h3>
+            <h4>
+              <% if picture.is_active == true %>
+                <p class="item-price"><%= picture.price * 10 %>コイン</p>
+              <% elsif picture.is_active == false %>
+                <p class="soldout">売り切れ中</p>
+              <% end %>
+            </h4>
+          </div>
         </div>
 
 	    <% end %>
 	  </div>
-	  <div class="picture-pagenate"><%= paginate @pictures %></div>
+	  <div class="picture-pagenate">
+	    <h5>
+	      <%= paginate @pictures %>
+	    </h5>
+	 </div>
 	</div>
 </div>

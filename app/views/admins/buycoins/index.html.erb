@@ -1,23 +1,32 @@
-<div class="container my-5">
-  <div class="row">
-    <div class="toppage">
-      <h2><b>購入申請一覧</b><span class="total_count">(全<%= @buycoins.total_count %>件)</span></h2>
-    </div>
-    <div class="item-box">
+<div class="container back my-5">
+
+  <div class="box1">
+    <h1 class="buy">購入申請一覧</h1>
+  </div>
+
+  <div class="box1">
+    <table class="pablic">
+      <tr>
+        <th class="t_top">会員ID:氏名</th>
+        <th class="t_top">コイン数</th>
+        <th class="t_top">反映ステータス</th>
+      </tr>
       <% @buycoins.each do |buycoin| %>
-
-        <div class="item-container">
-          <%= link_to buycoin.customer.name, admins_buycoin_path(buycoin.id) %>
-            <p class="item-name"><%= buycoin.piece %>コイン</p>
-          <% if buycoin.yet_buy == true %>
-            <p class="item-price">入金待ち</p>
-          <% elsif buycoin.yet_buy == false %>
-            <p class="soldout">反映済み</p>
-          <% end %>
-        </div>
-
-	    <% end %>
-	  </div>
-	  <div class="picture-pagenate"><%= paginate @buycoins %></div>
-	</div>
+        <tr>
+          <td class="t_line01"><%= buycoin.customer.id %>:<%= link_to buycoin.customer.name, admins_buycoin_path(buycoin.id) %></td>
+          <td class="t_line01"><%= buycoin.piece %>コイン</td>
+          <td class="t_line01">
+            <% if buycoin.yet_buy == true %>
+              入金待ち
+            <% elsif buycoin.yet_buy == false %>
+              反映済み
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="mx-auto" style="text-decoration:underline;">
+      <%= paginate @buycoins %>
+    </div>
+  </div>
 </div>

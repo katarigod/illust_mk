@@ -1,40 +1,26 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-11">
-      <h5 class="my-5">
-        <span class="midashi px-3">会員一覧</span>
-      </h5>
-    </div>
+<div class="container back my-5">
+
+  <div class="box1">
+    <h1 class="buy">会員一覧</h1>
   </div>
 
-  <div class="row">
-    <div class="col-10 mx-auto">
-      <table class="table">
-        <thead class="bg-light">
-          <tr>
-            <th scope="col">会員ID</th>
-            <th scope="col">氏名</th>
-            <th scope="col">メールアドレス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%@customers.each do |customer|%>
-          <tr>
-            <td><%=customer.id%></td>
-            <td style="text-decoration:underline;" >
-              <%=link_to customer.name,admins_public_path(customer.id),class:"text-dark"%>
-            </td>
-            <td><%=customer.email%></td>
-          </tr>
-        </tbody>
-        <%end%>
-      </table>
-      <div class="row">
-        <div class="mx-auto" style="text-decoration:underline;">
-          <%= paginate @customers%>
-        </div>
-      </div>
+  <div class="box1">
+    <table class="pablic">
+      <tr>
+        <th class="t_top">会員ID</th>
+        <th class="t_top">氏名</th>
+        <th class="t_top">メールアドレス</th>
+      </tr>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td class="t_line01"><%= customer.id %></td>
+          <td class="t_line01"><%= link_to customer.name,admins_public_path(customer.id),class:"text-dark" %></td>
+          <td class="t_line01"><%= customer.email %></td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="mx-auto" style="text-decoration:underline;">
+      <%= paginate @customers%>
     </div>
   </div>
 </div>

@@ -1,4 +1,6 @@
 class Customers::BuycoinsController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @buycoin = Buycoin.new
   end
@@ -23,11 +25,15 @@ class Customers::BuycoinsController < ApplicationController
 
   def confirm
     @change = ChangeCoin.new(change_coin_params)
-    piece1 = @change.piece * 1000
-    if piece1 <= current_customer.coin
-      @gabas = @change.piece * 900
-    else
+    if @change.piece == nil
       redirect_to '/buycoins/change'
+    else
+      piece1 = @change.piece * 1000
+      if piece1 <= current_customer.coin
+        @gabas = @change.piece * 900
+      else
+        redirect_to '/buycoins/change'
+      end
     end
 
   end

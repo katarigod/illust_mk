@@ -6,17 +6,23 @@
     <%end%>
   </ul>
 <%end%>
-<div>
-    <h1>コインを交換する</h1>
-<h3>ガバスと交換</h3>
-    <%= form_with url:confirm_path, model: @change_coin do |f| %>
-        <div>
-            <p>交換するコインを入力</p>
-            <%= f.text_field :piece,size:1 %>000コイン
-        </div>
-        <div>
-            <%= f.submit "コインを交換する",class:"btn btn--orange" %>
-        </div>
-    <% end %>
-    <!--<p><a href="" class="btn btn--orange">PUSH</a></p>-->
+
+<div class="container back my-5">
+    <div class="box1">
+        <h1 class="buy">コインを交換する</h1>
+    </div>
+    <div class="box1">
+        <h3 class="buy">ガバスと交換</h3>
+    </div>
+    <div class="box1">
+        <%= form_with url:confirm_path, model: @change_coin do |f| %>
+            <div class="text-center">
+                <p class="buy">交換するコインを入力</p>
+                <%= f.text_field :piece,size:1 %>000コイン
+            </div>
+            <div class="buy">
+                <%= f.submit "コインを交換する",class:"a-btn a-btn-border1" %>
+            </div>
+        <% end %>
+   </div>
 </div>
