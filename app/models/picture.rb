@@ -5,9 +5,9 @@ class Picture < ApplicationRecord
   has_many :tagconnects, dependent: :destroy
   has_many :tags, through: :tagconnects
 
-  validates :price, presence: true
-  validates :title, presence: true
-  validates :body, presence: true
+  validates :price, presence: true, numericality: {only_integer: true}, length: { maximum: 7 }
+  validates :title, presence: true, length: { maximum: 20 }
+  validates :body, presence: true, length: { maximum: 140 }
   validates :picture_image, presence: true
 
   def save_tags(tags)
