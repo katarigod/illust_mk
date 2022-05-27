@@ -1,67 +1,65 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-11">
-      <h5 class="pb-4 mt-5">
-        <span class="midashi px-3">会員情報編集</span>
-      </h5>
-    </div>
+<div class="container back my-5">
+  <div class="box1">
+    <h1 class="buy">販売イラスト情報編集</h1>
   </div>
 
 
 
-    <%= form_with model:@picture,local:true do |f| %>
+  <div class="row mt-5">
+    <div class="mx-auto pb-5">
+      <%= form_with model:@picture,local:true do |f| %>
         <div class="form-group row">
-            <div class="col-4">
-                <%= f.label :販売イラスト ,class:"pl-3" %>
-            </div>
-            <div class="col-8">
-                <%= image_tag @picture.picture_image ,size:"180x130" %>
-            </div>
+          <div class="col-5">
+            <%= f.label :販売イラスト ,class:"pl-3" %>
+          </div>
+          <div class="col-7">
+            <%= image_tag @picture.picture_image ,size:"180x130" %>
+          </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :タイトル,class:"pl-3"%>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= f.text_field :title,:placeholder=>"タイトル",size:30 %>
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :イラスト説明,class:"pl-3"%>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= f.text_area :body,:placeholder=>"説明",size:"30x5"%>
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :価格,class:"pl-3" %>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= f.text_field :price,size:1 %>0コイン
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :販売ステータス,class:"pl-3"%>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= f.radio_button :is_active, true, checked: true %>販売中  <%= f.radio_button :is_active, false%>販売停止中
           </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-4">
+          <div class="col-1"></div>
+          <div class="col-8 mt-5">
+            <%= f.submit" 編集内容を保存 ",class:"a-btn a-btn-border" %>
+          </div>
         </div>
-        <div class="col-5">
-          <%= f.submit" 編集内容を保存 ",class:"btn btn-success" %>
-        </div>
-      </div>
-  <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
