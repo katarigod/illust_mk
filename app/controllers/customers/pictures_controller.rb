@@ -3,6 +3,7 @@ class Customers::PicturesController < ApplicationController
 
   def index
     @pictures = Picture.where(is_active: true).page(params[:page]).per(8)
+    @tag_list=Tag.all
   end
 
   def new
@@ -12,10 +13,10 @@ class Customers::PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @picture.customer_id = current_customer.id
-    # tags = params[:picture][:tag_id].to_s.split(',')
+    tag_list = params[:picture][:name].split(',')
 
     if @picture.save
-      # @picture.save_tags(tags)
+      @picture.save_tag(tag_list)
       redirect_to mypage_path(current_customer)
     else
       render "new"
