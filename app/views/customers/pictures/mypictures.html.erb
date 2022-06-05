@@ -19,6 +19,11 @@
             <h3 class="item-name">
               Title:<%= picture.title %>
             </h3>
+            <h5>
+              <% picture.tags.each do |tag| %>
+                <i class="fas fa-tag"></i><%= tag.name %>
+              <% end %>
+            </h5>
             <h4>
               <% if picture.is_active == true %>
                 <p class="item-price"><%= picture.price * 10 %>コイン</p>

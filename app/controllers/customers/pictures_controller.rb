@@ -16,7 +16,14 @@ class Customers::PicturesController < ApplicationController
     tag_list = params[:picture][:name].split(',')
 
     if @picture.save
-      @picture.save_tag(tag_list)
+      if tag_list.empty?
+        tags = Vision.get_image_data(@picture.picture_image)
+        tags.each do |tag|
+          @picture.tags.create(name: tag)
+        end
+      else
+        @picture.save_tag(tag_list)
+      end
       redirect_to mypage_path(current_customer)
     else
       render "new"
@@ -36,14 +43,18 @@ class Customers::PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
-    @tags = @picture.tags.pluck(:name).join(',')
+    @tag_list = @picture.tags.pluck(:name).join(',')
   end
 
   def update
     @picture = Picture.find(params[:id])
-    # tags = params[:picture][:tag_id].split(',')
+    tag_list = params[:picture][:name].split(',')
     if @picture.update(picture_params)
-      # @picture.update_tags(tags)
+      @old_relations = Tagconnect.where(picture_id: @picture.id)
+      @old_relations.each do |relation|
+        relation.delete
+      end
+      @picture.save_tag(tag_list)
       redirect_to mypicture_path
     else
       render "edit"
