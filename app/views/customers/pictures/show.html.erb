@@ -29,6 +29,17 @@
 
       <div class="text-center buy">
         <h2>
+          タグ
+        </h2>
+        <h4>
+          <% @picture.tags.each do |tag| %>
+            <i class="fas fa-tag"></i><%= tag.name %>
+          <% end %>
+        </h4>
+      </div>
+
+      <div class="text-center buy">
+        <h2>
           価格
         </h2>
         <h2>
