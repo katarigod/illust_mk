@@ -10,7 +10,7 @@ class Picture < ApplicationRecord
   validates :body, presence: true, length: { maximum: 140 }
   validates :picture_image, presence: true
 
-  
+
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -21,7 +21,7 @@ class Picture < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
+      self.tags.delete Tag.find_by(name: old)
     end
 
     # 新しいタグを保存
@@ -29,7 +29,7 @@ class Picture < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(name: new)
       self.tags << new_post_tag
     end
-  end  
-  
+  end
+
 
 end

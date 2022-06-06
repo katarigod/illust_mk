@@ -1,2 +1,67 @@
-<h1>Admins::Pictures#show</h1>
-<p>Find me in app/views/admins/pictures/show.html.erb</p>
+<div class="container my-5 back">
+  <div class="py-5">
+    <h1 class="text-center">イラスト管理</h1>
+  </div>
+  <div class="big-box1">
+
+    <div>
+      <%=image_tag @picture.picture_image,size:"250x250"%>
+    </div>
+
+    <div>
+      <div class="text-center">
+        <h2>
+          作者
+        </h2>
+        <h3>
+          <%= link_to(admins_public_path(@picture.customer.id))do %><span><%= @picture.customer.name %></span><% end %>
+        </h3>
+      </div>
+      <div class="text-center">
+        <h2>
+          Title
+        </h2>
+        <h3>
+          <%= @picture.title %>
+        </h3>
+      </div>
+
+      <div class="text-center buy">
+        <h2>
+          イラスト説明
+        </h2>
+        <h4>
+          <%= @picture.body %>
+        </h4>
+      </div>
+
+      <div class="text-center buy">
+        <h2>
+          タグ
+        </h2>
+        <h4>
+          <% @picture.tags.each do |tag| %>
+            <i class="fas fa-tag"></i><%= tag.name %>
+          <% end %>
+        </h4>
+      </div>
+
+      <div class="text-center buy">
+        <h2>
+          価格
+        </h2>
+        <h2>
+          <%=(@picture.price*10).round.to_s(:delimited)%>コイン
+        </h2>
+      </div>
+
+      <div class="text-center buy">
+        <%= link_to "削除", admins_picture_path(@picture), method: :delete, data: { confirm: '本当に消しますか？' }, class:"a-btn a-btn-border1" %>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>

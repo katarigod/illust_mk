@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     patch 'publics/:id' => 'publics#update',as: :updatepage
     # resource :publics,only:[:show,:edit,:update]
     root :to => "homes#top"
-    get 'pictures/mypictures',as: :mypicture
+    get 'pictures/mypictures/:id' => 'pictures#mypictures',as: :mypicture
     get 'pictures/index'
     resources :pictures,only:[:new,:create,:show,:edit,:update]
     get 'collects' => 'collects#index'

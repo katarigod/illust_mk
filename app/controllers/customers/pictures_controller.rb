@@ -19,7 +19,12 @@ class Customers::PicturesController < ApplicationController
       if tag_list.empty?
         tags = Vision.get_image_data(@picture.picture_image)
         tags.each do |tag|
-          @picture.tags.create(name: tag)
+          if Tag.exists?(name: tag)
+            aitag = Tag.find_by(name: tag)
+            @picture.tagconnects.create(tag_id: aitag.id)
+          else
+            @picture.tags.create(name: tag)
+          end
         end
       else
         @picture.save_tag(tag_list)
@@ -38,7 +43,8 @@ class Customers::PicturesController < ApplicationController
   end
 
   def mypictures
-    @pictures = Picture.where(customer_id: current_customer.id).page(params[:page]).per(8)
+    @customer = Customer.find(params[:id])
+    @pictures = Picture.where(customer_id: @customer.id).page(params[:page]).per(8)
   end
 
   def edit
@@ -54,8 +60,20 @@ class Customers::PicturesController < ApplicationController
       @old_relations.each do |relation|
         relation.delete
       end
-      @picture.save_tag(tag_list)
-      redirect_to mypicture_path
+      if tag_list.empty?
+        tags = Vision.get_image_data(@picture.picture_image)
+        tags.each do |tag|
+          if Tag.exists?(name: tag)
+            aitag = Tag.find_by(name: tag)
+            @picture.tagconnects.create(tag_id: aitag.id)
+          else
+            @picture.tags.create(name: tag)
+          end
+        end
+      else
+        @picture.save_tag(tag_list)
+      end
+      redirect_to mypicture_path(current_customer)
     else
       render "edit"
     end

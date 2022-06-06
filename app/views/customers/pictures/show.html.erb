@@ -11,6 +11,14 @@
     <div>
       <div class="text-center">
         <h2>
+          作者
+        </h2>
+        <h3>
+          <%= link_to(mypage_path(@picture.customer_id))do %><span><%= @picture.customer.name %></span><% end %>
+        </h3>
+      </div>
+      <div class="text-center">
+        <h2>
           Title
         </h2>
         <h3>

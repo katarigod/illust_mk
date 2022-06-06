@@ -1,2 +1,48 @@
-<h1>Admins::Pictures#index</h1>
-<p>Find me in app/views/admins/pictures/index.html.erb</p>
+<div class="container my-5 back">
+  <div class="box1">
+    <h1 class="buy">収益：<%= @revenue %>コイン</h1>
+  </div>
+  <h2><b>イラスト一覧</b><span class="total_count">(全<%= @pictures.total_count %>件)</span></h2>
+  <div class="row">
+    <div class="big-box">
+      <% @pictures.each do |picture| %>
+
+        <div class="min-box">
+          <%= link_to admins_picture_path(picture.id), class: "btn-link" do %>
+            <div class="image-field">
+              <% if picture.picture_image.attached? %>
+                <%= image_tag picture.picture_image ,size:"270x270" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "270x270" %>
+              <% end %>
+            </div>
+
+          <% end %>
+          <div class="text-center">
+            <h3 class="item-name">
+              Title:<%= picture.title %>
+            </h3>
+            <h5>
+              <% picture.tags.each do |tag| %>
+                <i class="fas fa-tag"></i><%= tag.name %>
+              <% end %>
+            </h5>
+            <h4>
+              <% if picture.is_active == true %>
+                <p class="item-price"><%= picture.price * 10 %>コイン</p>
+              <% elsif picture.is_active == false %>
+                <p class="soldout">売り切れ中</p>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+
+	    <% end %>
+	  </div>
+	  <div class="picture-pagenate">
+	    <h5>
+	      <%= paginate @pictures %>
+	    </h5>
+	 </div>
+	</div>
+</div>
