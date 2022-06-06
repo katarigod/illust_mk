@@ -2,6 +2,7 @@ class Admins::PublicsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    @revenue = current_admin.admin_coin
     @customers=Customer.page(params[:page])
   end
 

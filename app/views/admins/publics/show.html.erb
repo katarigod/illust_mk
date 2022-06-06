@@ -37,7 +37,7 @@
     </div>
     <div class="box1 mt-5">
         <div>
-            <%= link_to"退会させる",admins_public_path(@customer.id),method: :delete,class:"a-btn a-btn-border" %>
+            <%= link_to"退会させる",admins_public_path(@customer.id),method: :delete, data: { confirm: '本当に消しますか？' },class:"a-btn a-btn-border" %>
         </div>
     </div>
 </div>

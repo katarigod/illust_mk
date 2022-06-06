@@ -12,6 +12,11 @@ class Customers::PublicsController < ApplicationController
         @customer = Customer.find(params[:id])
         render 'show'
       end
+    else
+      if @customer.profile_id == nil
+      else
+        @profile_customer = Customer.find(@customer.profile_id)
+      end
     end
 
   end

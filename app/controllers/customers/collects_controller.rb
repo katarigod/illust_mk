@@ -34,6 +34,7 @@ class Customers::CollectsController < ApplicationController
     collect = Collect.find(params[:id])
     customer = current_customer
     customer.profile_url = url_for(collect.picture.picture_image)
+    customer.profile_id = collect.picture.customer_id
     # downloaded_image = collect.picture.picture_image.download
     # @customer.profile_image.attach(io: downloaded_image  , filename: "foo.jpg")
     # @customer.save!

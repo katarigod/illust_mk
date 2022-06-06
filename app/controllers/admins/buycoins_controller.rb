@@ -2,6 +2,7 @@ class Admins::BuycoinsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    @revenue = current_admin.admin_coin
     @buycoins = Buycoin.all.page(params[:page]).per(20)
   end
 

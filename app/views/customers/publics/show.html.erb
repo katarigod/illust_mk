@@ -15,60 +15,82 @@
     <div>
       <div class="text-center buy">
         <h4 class="coin">
-          保有コイン　:　<%= @customer.coin %>枚
+          <% if @customer == current_customer %>
+            保有コイン　:　<%= @customer.coin %>枚
+          <% else %>
+            <% if @customer.profile_id  == nil %>
+              プロフィール画像未設定
+            <% else %>
+              イラスト作者：<%= link_to(mypage_path(@profile_customer.id))do %><span><%= @profile_customer.name %></span><% end %>
+            <% end %>
+          <% end %>
         </h4>
       </div>
-      <div class="big-box1">
-        <div class="margin">
-          <%= link_to(new_buycoin_path,class:"a-btn a-btn-3d-circle")do %>
-            <span class="a-btn-3d-circle-content">
-              <span class="a-btn-3d-circle-front">コインを購入</span>
-            </span>
-            <span class="a-btn-3d-circle-back">Go!</span>
-          <% end %>
+
+      <% if @customer == current_customer %>
+
+        <div class="big-box1">
+          <div class="margin">
+            <%= link_to(new_buycoin_path,class:"a-btn a-btn-3d-circle")do %>
+              <span class="a-btn-3d-circle-content">
+                <span class="a-btn-3d-circle-front">コインを購入</span>
+              </span>
+              <span class="a-btn-3d-circle-back">Go!</span>
+            <% end %>
+          </div>
+
+          <div class="margin">
+            <%= link_to(change_path,class:"a-btn a-btn-3d-circle")do %>
+              <span class="a-btn-3d-circle-content">
+                <span class="a-btn-3d-circle-front">コインと交換</span>
+              </span>
+              <span class="a-btn-3d-circle-back">Go!</span>
+            <% end %>
+          </div>
         </div>
 
-        <div class="margin">
-          <%= link_to(change_path,class:"a-btn a-btn-3d-circle")do %>
-            <span class="a-btn-3d-circle-content">
-              <span class="a-btn-3d-circle-front">コインと交換</span>
-            </span>
-            <span class="a-btn-3d-circle-back">Go!</span>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="box1">
-        <div class="margin">
-          <%= link_to(editpage_path(current_customer),class:"a-btn a-btn-3d-circle")do %>
-            <span class="a-btn-3d-circle-content">
-              <span class="a-btn-3d-circle-front">会員情報を変更</span>
-            </span>
-            <span class="a-btn-3d-circle-back">Go!</span>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="big-box1">
-        <div class="margin">
-          <%= link_to(new_picture_path,class:"a-btn a-btn-3d-circle")do %>
-            <span class="a-btn-3d-circle-content">
-              <span class="a-btn-3d-circle-front">イラストを販売</span>
-            </span>
-            <span class="a-btn-3d-circle-back">Go!</span>
-          <% end %>
+        <div class="box1">
+          <div class="margin">
+            <%= link_to(editpage_path(current_customer),class:"a-btn a-btn-3d-circle")do %>
+              <span class="a-btn-3d-circle-content">
+                <span class="a-btn-3d-circle-front">会員情報を変更</span>
+              </span>
+              <span class="a-btn-3d-circle-back">Go!</span>
+            <% end %>
+          </div>
         </div>
 
-        <div class="margin">
-          <%= link_to(mypicture_path,class:"a-btn a-btn-3d-circle")do %>
-            <span class="a-btn-3d-circle-content">
-              <span class="a-btn-3d-circle-front">イラストを管理</span>
-            </span>
-            <span class="a-btn-3d-circle-back">Go!</span>
-          <% end %>
+        <div class="big-box1">
+          <div class="margin">
+            <%= link_to(new_picture_path,class:"a-btn a-btn-3d-circle")do %>
+              <span class="a-btn-3d-circle-content">
+                <span class="a-btn-3d-circle-front">イラストを販売</span>
+              </span>
+              <span class="a-btn-3d-circle-back">Go!</span>
+            <% end %>
+          </div>
+
+          <div class="margin">
+            <%= link_to(mypicture_path(@customer),class:"a-btn a-btn-3d-circle")do %>
+              <span class="a-btn-3d-circle-content">
+                <span class="a-btn-3d-circle-front">イラストを管理</span>
+              </span>
+              <span class="a-btn-3d-circle-back">Go!</span>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div class="box1">
+          <div class="margin">
+            <%= link_to(mypicture_path(@customer),class:"a-btn a-btn-3d-circle")do %>
+              <span class="a-btn-3d-circle-content">
+                <span class="a-btn-3d-circle-front"><%= @customer.name %>のイラスト</span>
+              </span>
+              <span class="a-btn-3d-circle-back">Go!</span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-
   </div>
 </div>
