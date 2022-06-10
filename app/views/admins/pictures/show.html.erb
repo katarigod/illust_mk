@@ -5,7 +5,7 @@
   <div class="big-box1">
 
     <div>
-      <%=image_tag @picture.picture_image,size:"250x250"%>
+      <%= image_tag @picture.picture_image,size:"250x250" %>
     </div>
 
     <div>
@@ -51,7 +51,7 @@
           価格
         </h2>
         <h2>
-          <%=(@picture.price*10).round.to_s(:delimited)%>コイン
+          <%= (@picture.price*10).round.to_s(:delimited) %>コイン
         </h2>
       </div>
 
