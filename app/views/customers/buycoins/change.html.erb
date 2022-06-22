@@ -1,11 +1,11 @@
-<%if @change.errors.any?%>
+<% if @change.errors.any? %>
   <h3><%= @change.errors.count%>個のエラーがあります</h3>
   <ul>
     <% @change.errors.full_messages.each do |message|%>
     <li><%=message%></li>
-    <%end%>
+    <% end %>
   </ul>
-<%end%>
+<% end %>
 
 <div class="container back my-5">
     <div class="box1">
