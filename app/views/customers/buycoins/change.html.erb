@@ -1,8 +1,8 @@
 <% if @change.errors.any? %>
-  <h3><%= @change.errors.count%>個のエラーがあります</h3>
+  <h3><%= @change.errors.count %>個のエラーがあります</h3>
   <ul>
-    <% @change.errors.full_messages.each do |message|%>
-    <li><%=message%></li>
+    <% @change.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
