@@ -35,9 +35,6 @@ class Customers::CollectsController < ApplicationController
     customer = current_customer
     customer.profile_url = url_for(collect.picture.picture_image)
     customer.profile_id = collect.picture.customer_id
-    # downloaded_image = collect.picture.picture_image.download
-    # @customer.profile_image.attach(io: downloaded_image  , filename: "foo.jpg")
-    # @customer.save!
 
     if customer.save
       redirect_to mypage_path(current_customer.id)
