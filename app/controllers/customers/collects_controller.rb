@@ -4,7 +4,6 @@ class Customers::CollectsController < ApplicationController
   def index
     @collects = Collect.where(customer_id: current_customer.id).page(params[:page]).per(8)
     @customer = current_customer
-    # @pictures = collect.picture.page(params[:page]).per(8)
   end
 
   def create
