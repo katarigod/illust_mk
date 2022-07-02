@@ -3,8 +3,6 @@ class Customers::PublicsController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    # @collect = Collect.find(params[:format])
-    # binding.pry
     if @customer == current_customer
       if @customer.coin == nil
         @customer.coin = 0
