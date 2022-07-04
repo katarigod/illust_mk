@@ -39,7 +39,6 @@ class Customers::PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     @collect =Collect.new
     @price = @picture.price * 10
-    # @tags = @picture.tags.pluck(:name).join(',')
   end
 
   def mypictures
