@@ -38,6 +38,5 @@ Rails.application.routes.draw do
     post 'buycoins/confirm' => 'buycoins#confirm'
     resources :buycoins,only:[:index,:new,:create,:show,:update]
 
-    # resources :change_coins,only:[:new,:create]
   end
 end
