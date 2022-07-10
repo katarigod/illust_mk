@@ -13,9 +13,6 @@ class Customer < ApplicationRecord
   has_many :buycoins,dependent: :destroy
   has_many :change_coins,dependent: :destroy
 
-  # def image_url
-  #   image.attached? ? url_for(profile_image) : nil
-  # end
 
   def get_profile_image(width, height)
     unless profile_image.attached?
