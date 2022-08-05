@@ -226,14 +226,13 @@ footer{
   margin-bottom: 6px;
 }
 
-
 /*ページ配置設定*/
 .box{
-        display: flex;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
 .big-box{
   display: flex;
@@ -242,7 +241,6 @@ footer{
 }
 
 /*マイページ用ボックス*/
-
 .big-box1{
   display: flex;
   flex-wrap: wrap;
@@ -261,7 +259,6 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 /*ページグレーの背景設定*/
@@ -269,9 +266,6 @@ footer{
   background-color: rgba(211, 211, 211, 0.7);
   padding-bottom: 20px;
 }
-
-
-
 
 /*マージントップ適宜付けたい用*/
 .buy{
