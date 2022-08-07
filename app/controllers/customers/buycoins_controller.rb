@@ -34,7 +34,6 @@ class Customers::BuycoinsController < ApplicationController
         redirect_to '/buycoins/change'
       end
     end
-
   end
 
   def changecoin
