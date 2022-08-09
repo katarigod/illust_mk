@@ -20,7 +20,6 @@ html {
 }
 
 /*ボタン装飾*/
-
 .a-btn{
   font-size: 1rem;
   font-weight: 700;
@@ -56,14 +55,11 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-
   width: 5px;
   height: 100%;
-
   content: '';
   -webkit-transition: all .3s;
   transition: all .3s;
-
   background: #000;
 }
 
@@ -160,10 +156,8 @@ html {
 .a-btn-3d-circle:hover .a-btn-3d-circle-back {
   top: calc(50% - 2rem);
   left: calc(35% - 0.75rem);
-
   opacity: 1;
 }
-
 .a-btn-3d-circle-back {
   font-size: 3rem;
   position: absolute;
