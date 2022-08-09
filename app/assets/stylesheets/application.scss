@@ -20,7 +20,6 @@ html {
 }
 
 /*ボタン装飾*/
-
 .a-btn{
   font-size: 1rem;
   font-weight: 700;
@@ -56,14 +55,11 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-
   width: 5px;
   height: 100%;
-
   content: '';
   -webkit-transition: all .3s;
   transition: all .3s;
-
   background: #000;
 }
 
@@ -161,10 +157,8 @@ html {
 .a-btn-3d-circle:hover .a-btn-3d-circle-back {
   top: calc(50% - 2rem);
   left: calc(35% - 0.75rem);
-
   opacity: 1;
 }
-
 .a-btn-3d-circle-back {
   font-size: 3rem;
   position: absolute;
@@ -227,14 +221,13 @@ footer{
   margin-bottom: 6px;
 }
 
-
 /*ページ配置設定*/
 .box{
-        display: flex;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
 .big-box{
   display: flex;
@@ -243,7 +236,6 @@ footer{
 }
 
 /*マイページ用ボックス*/
-
 .big-box1{
   display: flex;
   flex-wrap: wrap;
@@ -262,7 +254,6 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 /*ページグレーの背景設定*/
@@ -270,9 +261,6 @@ footer{
   background-color: rgba(211, 211, 211, 0.7);
   padding-bottom: 20px;
 }
-
-
-
 
 /*マージントップ適宜付けたい用*/
 .buy{
