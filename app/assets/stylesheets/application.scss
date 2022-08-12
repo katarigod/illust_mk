@@ -116,9 +116,7 @@ html {
   line-height: 100px;
   width: 100px;
   height: 100px;
-
   -webkit-transition: all 0.6s;
-
   transition: all 0.6s;
   border-radius: 50%;
   background: #f2f5f6;
@@ -138,7 +136,6 @@ html {
   );
   background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
   -webkit-transform-style: preserve-3d;
-
   transform-style: preserve-3d;
   -webkit-perspective: 150px;
   perspective: 150px;
